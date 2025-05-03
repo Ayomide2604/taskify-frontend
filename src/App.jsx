@@ -1,11 +1,11 @@
 import { Routes, Route } from "react-router-dom";
 import Login from "./components/Login";
-import Todo from "./components/todo";
 import Header from "./components/Header";
 import ProtectedRoute from "./components/ProtectedRoute";
-import "./App.css";
 import Home from "./components/Home";
 import Signup from "./components/Signup";
+import Todo from "./components/Todo";
+import "./App.css";
 
 function App() {
 	return (

@@ -12,7 +12,12 @@ createRoot(document.getElementById("root")).render(
 	<StrictMode>
 		<BrowserRouter>
 			<App />
-			<ToastContainer position="top-right" autoClose={3000} theme="light" />
+			<ToastContainer
+				position="top-right"
+				autoClose={3000}
+				theme="light"
+				style={{ position: "fixed", zIndex: "9999" }}
+			/>
 		</BrowserRouter>
 	</StrictMode>
 );
