@@ -13,8 +13,8 @@ const Home = () => {
 				<h2>Welcome to Taskify</h2>
 				<div className="d-flex">
 					{token ? (
-						<button className="btn btn-info btn-lg ms-3  ">
-							<Link to='/todos'>View Tasks</Link>
+						<button className="btn btn-outline-info btn-lg ms-3">
+							<Link to="/todos">View Tasks</Link>
 						</button>
 					) : (
 						<>
@@ -22,7 +22,7 @@ const Home = () => {
 								<Link to="/login">Login</Link>
 							</button>
 							<button className="btn btn-outline-info btn-lg ms-3 ">
-								<Link>Signup</Link>
+								<Link to='/signup'>Signup</Link>
 							</button>
 						</>
 					)}

@@ -1,3 +1,19 @@
-.hero-img{
-    filter: brightness(0.5);
+.hero-img {
+	filter: brightness(0.5);
+}
+
+.nav-link-button {
+	background: none;
+	border: none;
+	color: inherit;
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	padding: 0;
+	cursor: pointer;
+	text-decoration: none;
+	font-size: 1rem;
+}
+.nav-link-button:hover {
+	color: #0dcaf0; /* or whatever your hover color is */
 }

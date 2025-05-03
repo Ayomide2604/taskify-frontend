@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { HiOutlineX } from "react-icons/hi";
-import { Alert } from "react-bootstrap";
 import { titleCase } from "title-case";
+import { toast } from "react-toastify";
 import api from "../utils/api";
 import Loader from "./Loader";
 
@@ -9,7 +9,6 @@ const Todo = () => {
 	const [todos, setTodos] = useState([]);
 	const [todo, setTodo] = useState(null);
 	const [loading, setLoading] = useState(false);
-	const [error, setError] = useState(null);
 	const [initialFormData, setInitialFormData] = useState({ task: "" });
 	const [formData, setFormData] = useState({ task: "" });
 
@@ -18,10 +17,9 @@ const Todo = () => {
 			setLoading(true);
 			const response = await api.get("/todos");
 			setTodos(response.data);
-			setError(null);
 		} catch (error) {
 			console.error(error.message);
-			setError(error.message);
+			toast.error(error.message);
 		} finally {
 			setLoading(false);
 		}
@@ -32,7 +30,7 @@ const Todo = () => {
 			const response = await api.get(`todos/${id}/`);
 			setTodo(response.data);
 		} catch (error) {
-			setError(error.message);
+			toast.error(error.message);
 			console.error(error.message);
 		} finally {
 			setLoading(false);
@@ -52,7 +50,7 @@ const Todo = () => {
 			await api.patch(`todos/${id}/`, { is_completed: !todo?.is_completed });
 			fetchTodos();
 		} catch (error) {
-			setError(error.message);
+			toast.error(error.message);
 			console.error(error.message);
 		}
 	};
@@ -64,7 +62,7 @@ const Todo = () => {
 			(todo) => todo.task.toLowerCase() === formData.task.toLowerCase()
 		);
 		if (exists) {
-			alert("Todo already exists");
+			toast.info("Todo already exists");
 		} else {
 			const form = new FormData();
 			form.append("task", formData.task.trim().toLowerCase());
@@ -74,11 +72,10 @@ const Todo = () => {
 				setFormData(initialFormData);
 			} catch (error) {
 				if (error.response) {
-					console.error(error.response.data.detail);
-					// alert(error.response.data.detail || "Failed to add todo");
-					setError(error.message);
+					toast.error("Unable to add task");
 				} else {
-					alert("Network Error");
+					toast.error("Network Error");
+					console.error(error.message);
 				}
 			}
 		}
@@ -89,6 +86,7 @@ const Todo = () => {
 			await api.delete(`todos/${id}/`);
 			fetchTodos();
 		} catch (error) {
+			toast.error("unable to remove task");
 			console.error(error.message);
 		}
 	};
@@ -101,11 +99,6 @@ const Todo = () => {
 		);
 	}
 
-	if (error) {
-		<>
-			<Alert title={error} />
-		</>;
-	}
 	return (
 		<section id="hero" className=" hero section dark-background vh-100">
 			<img
@@ -142,10 +135,10 @@ const Todo = () => {
 										Add
 									</button>
 								</form>
-								<div className="list-wrapper ">
-									<ul className="d-flex flex-column-reverse todo-list">
-										{todos.length > 0 ? (
-											todos?.map((todo) => (
+								{todos.length > 0 ? (
+									todos?.map((todo) => (
+										<div className="list-wrapper ">
+											<ul className="d-flex flex-column-reverse todo-list">
 												<li className={todo.is_completed ? "completed" : ""}>
 													<div className="form-check">
 														<label className="form-check-label">
@@ -166,16 +159,14 @@ const Todo = () => {
 														}}
 													/>
 												</li>
-											))
-										) : (
-											<div className=" d-grid gap-5 justify-content-center align-items-center ">
-												<h4 className="text-center text-dark">
-													You have no Tasks
-												</h4>
-											</div>
-										)}
-									</ul>
-								</div>
+											</ul>
+										</div>
+									))
+								) : (
+									<div className=" d-grid gap-5 justify-content-center align-items-center ">
+										<h4 className="text-center text-dark">You have no Tasks</h4>
+									</div>
+								)}
 							</div>
 						</div>
 					</div>

@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import api from "../utils/api";
 
 const Login = () => {
@@ -24,13 +25,13 @@ const Login = () => {
 			const { access, refresh } = response.data;
 			localStorage.setItem("access", access);
 			localStorage.setItem("refresh", refresh);
-			alert("Login successfully");
+			toast.success("Login Successful");
 			navigate("/todos");
 		} catch (error) {
 			if (error.response) {
-				alert(error.response.data.detail || "Login Failed");
+				toast.error(error.response.data.detail || "Login Failed");
 			} else {
-				alert("Network Error");
+				toast.error("Network Error");
 				console.error(error.message);
 			}
 		}

@@ -9,6 +9,7 @@ import {
 	BiLogOutCircle,
 	BiUserCircle,
 } from "react-icons/bi";
+import { toast } from "react-toastify";
 
 const Header = () => {
 	const navigate = useNavigate();
@@ -19,23 +20,25 @@ const Header = () => {
 	const handleMenuToggle = () => {
 		setMenuOpen(!menuOpen);
 	};
-	const handleLogout = (e) => {
+
+	const handleLogout = () => {
 		try {
 			localStorage.removeItem("access");
 			localStorage.removeItem("refresh");
-			navigate("/");
-			alert("Logged Out successfully");
+			toast.success("Successfully Logged Out");
+			navigate("/"); // Corrected to useNavigate
 		} catch (error) {
 			console.error(error.message);
 		}
 	};
+
 	return (
 		<header
 			id="header"
 			className={
 				menuOpen
 					? "header header-show dark-background d-flex flex-column"
-					: "header  dark-background d-flex flex-column"
+					: "header dark-background d-flex flex-column"
 			}
 		>
 			{menuOpen ? (
@@ -81,9 +84,9 @@ const Header = () => {
 
 					{token ? (
 						<li>
-							<Link onClick={handleLogout}>
+							<button onClick={handleLogout} className="nav-link-button ms-2 mt-2">
 								<BiLogOutCircle size={25} className="navicon" /> Logout
-							</Link>
+							</button>
 						</li>
 					) : (
 						<>
@@ -97,7 +100,7 @@ const Header = () => {
 							</li>
 							<li>
 								<Link
-									className={currentPath === "/login" ? "active" : ""}
+									className={currentPath === "/signup" ? "active" : ""}
 									to="/signup"
 								>
 									<BiUserCircle size={25} className="navicon" /> Signup

@@ -24,14 +24,14 @@ const Signup = () => {
 
 		try {
 			const response = await api.post("/auth/users/", formData);
-			alert("User Account Created successfully");
+			toast.success("User Account Created successfully");
 			navigate("/login");
 		} catch (error) {
 			if (error.response) {
-				alert(error.response.data.detail || "User Registration Failed");
+				toast.error(error.response.data.detail || "User Registration Failed");
 				console.error(error.response.data);
 			} else {
-				alert("Network Error");
+				toast.error("Network Error");
 				console.error(error.message);
 			}
 		}
@@ -43,7 +43,7 @@ const Signup = () => {
 			<div className=" login-container ">
 				<div className="d-flex justify-content-center align-items-center">
 					<div
-						className="card p-5 shadow justify-content-center  "
+						className="card p-5 mx-4 shadow justify-content-center  "
 						style={{ width: "100%", maxWidth: "500px" }}
 					>
 						<h4 className="mb-3 text-center text-dark">Signup</h4>
