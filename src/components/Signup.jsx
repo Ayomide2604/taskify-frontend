@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import api from "../utils/api";
 import heroBg from "../assets/img/hero.jpg";
-
+import { toast } from "react-toastify";
 const Signup = () => {
 	const navigate = useNavigate();
 	const [formData, setFormData] = useState({
