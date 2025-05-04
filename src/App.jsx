@@ -4,6 +4,7 @@ import Header from "./components/Header";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Home from "./components/Home";
 import Signup from "./components/Signup";
+import TaskScreen from "./Screens/TaskScreen";
 import Todo from "./components/Todo";
 import "./App.css";
 
@@ -16,10 +17,10 @@ function App() {
 				<Routes>
 					<Route path="/" element={<Home />} />
 					<Route
-						path="/todos"
+						path="/tasks"
 						element={
 							<ProtectedRoute>
-								<Todo />
+								<TaskScreen />
 							</ProtectedRoute>
 						}
 					/>

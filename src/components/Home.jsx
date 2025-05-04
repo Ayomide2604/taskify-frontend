@@ -14,7 +14,7 @@ const Home = () => {
 				<div className="d-flex">
 					{token ? (
 						<button className="btn btn-outline-info btn-lg ms-3">
-							<Link to="/todos">View Tasks</Link>
+							<Link to="/tasks">View Tasks</Link>
 						</button>
 					) : (
 						<>

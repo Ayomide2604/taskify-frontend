@@ -75,8 +75,8 @@ const Header = () => {
 					</li>
 					<li>
 						<Link
-							className={currentPath === "/todos" ? "active" : ""}
-							to="/todos"
+							className={currentPath === "/tasks" ? "active" : ""}
+							to="/tasks"
 						>
 							<BiTask size={25} className="navicon" /> Tasks
 						</Link>
@@ -84,7 +84,10 @@ const Header = () => {
 
 					{token ? (
 						<li>
-							<button onClick={handleLogout} className="nav-link-button ms-2 mt-2">
+							<button
+								onClick={handleLogout}
+								className="nav-link-button ms-2 mt-2"
+							>
 								<BiLogOutCircle size={25} className="navicon" /> Logout
 							</button>
 						</li>

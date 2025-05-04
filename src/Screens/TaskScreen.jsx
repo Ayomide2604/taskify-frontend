@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import api from "../utils/api";
-import Loader from "./Loader";
-import TodoForm from "./TodoForm";
-import TodoList from "./TodoList";
+import Loader from "../components/Loader";
+import TodoForm from "../components/TodoForm";
+import TodoList from "../components/TodoList";
 
-const Todo = () => {
+const TaskScreen = () => {
 	const [todos, setTodos] = useState([]);
 	const [todo, setTodo] = useState(null);
 	const [loading, setLoading] = useState(false);
@@ -133,4 +133,4 @@ const Todo = () => {
 	);
 };
 
-export default Todo;
+export default TaskScreen;
