@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import api from "../utils/api";
+import heroBg from "../assets/img/hero.jpg";
 
 const Login = () => {
 	const navigate = useNavigate();
@@ -26,7 +27,7 @@ const Login = () => {
 			localStorage.setItem("access", access);
 			localStorage.setItem("refresh", refresh);
 			toast.success("Login Successful");
-			navigate("/todos");
+			navigate("/tasks");
 		} catch (error) {
 			if (error.response) {
 				toast.error(error.response.data.detail || "Login Failed");
@@ -39,7 +40,7 @@ const Login = () => {
 
 	return (
 		<section id="hero" className="hero section dark-background">
-			<img src="/hero2.jpg" alt="" data-aos="fade-in" className="hero-img" />
+			<img src={heroBg} alt="" data-aos="fade-in" className="hero-img" />
 			<div className=" login-container ">
 				<div className="d-flex justify-content-center align-items-center">
 					<div

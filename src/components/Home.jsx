@@ -1,9 +1,10 @@
 import { Link } from "react-router-dom";
+import heroBg from "../assets/img/hero.jpg";
 const Home = () => {
 	const token = localStorage.getItem("access");
 	return (
 		<section id="hero" className="hero section dark-background">
-			<img src="/hero2.jpg" alt="" data-aos="fade-in" className="hero-img" />
+			<img src={heroBg} alt="" data-aos="fade-in" className="hero-img" />
 
 			<div
 				className="container d-grid gap-3"

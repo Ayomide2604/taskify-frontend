@@ -4,6 +4,7 @@ import api from "../utils/api";
 import Loader from "../components/Loader";
 import TodoForm from "../components/TodoForm";
 import TodoList from "../components/TodoList";
+import heroBg from "../assets/img/hero.jpg";
 
 const TaskScreen = () => {
 	const [todos, setTodos] = useState([]);
@@ -102,7 +103,7 @@ const TaskScreen = () => {
 	return (
 		<section id="hero" className=" hero section dark-background vh-100">
 			<img
-				src="/hero2.jpg"
+				src={heroBg}
 				alt=""
 				data-aos="fade-in"
 				className="hero-img img-fluid"

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import api from "../utils/api";
+import heroBg from "../assets/img/hero.jpg";
 
 const Signup = () => {
 	const navigate = useNavigate();
@@ -39,7 +40,7 @@ const Signup = () => {
 
 	return (
 		<section id="hero" className="hero section dark-background">
-			<img src="/hero2.jpg" alt="" data-aos="fade-in" className="hero-img" />
+			<img src={heroBg} alt="" data-aos="fade-in" className="hero-img" />
 			<div className=" login-container ">
 				<div className="d-flex justify-content-center align-items-center">
 					<div

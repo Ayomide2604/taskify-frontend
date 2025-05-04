@@ -6,8 +6,8 @@ import {
 	BiHome,
 	BiTask,
 	BiLogInCircle,
-	BiLogOutCircle,
 	BiUserCircle,
+	BiLogOutCircle,
 } from "react-icons/bi";
 import { toast } from "react-toastify";
 
